@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developement</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/de270889e1.js" crossorigin="anonymous"></script>
+
+
+    <!-- Navbar script -->
+
+    <script>
+        //---------- Navbar ----------//
+
+        window.addEventListener('scroll', function () {
+            let navbar = document.getElementById("navbar");
+            navbar.classList.toggle('fixed', this.window.scrollY > 0)
+        })
+
+        // Portfolio Gallery
+
+        let filterContainer = document.querySelector(".gallery-filter");
+        let galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterContainer.addEventListener("click", (event) => {
+            if (event.target.classList.contains("filter-item")) {
+                // deactivates existing active filter item
+                filterContainer.querySelector(".active").classList.remove("active");
+                // activates new filter item
+                event.target.classList.add("active");
+                let filterValue = event.target.getAttribute("data-filter");
+                galleryItems.forEach((item) => {
+                    if (item.classList.contains(filterValue) || filterValue === "all") {
+                        item.classList.remove("hide");
+                        item.classList.add("show");
+                    }
+                    else {
+                        item.classList.remove("show");
+                        item.classList.add("hide");
+                    }
+                });
+            }
+
+        });
+
+        // Review Carousel
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1200: {
+                    items: 2
+                }
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-------------- AOS Link -------------->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+
+<body>
+
+
+    <!-------------- Navbar -------------->
+    <header>
+        <nav id="navbar" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1800">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="AS.png" alt="">
+                </a>
+
+            </div>
+            <!-- Hamurger -->
+            <input type="checkbox" class="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+
+            <ul class="nav-items">
+                <li><a href="index.html">Home<i class="fa-solid fa-house-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-------------- Services Section -------------->
+    <section id="services">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>Developement</h2>
+            </div>
+            <div class="animate-bar"></div>
+            <div class="sub-heading">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, egestas. Id fermentum nullam ipsum
+                    massa.</p> -->
+            </div>
+        </div>
+        <div class="container">
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://ankit-neticon.github.io/CabWala.github.io/" target="_blank">
+                        <i class="fa-solid fa-taxi"></i>
+                        <h5>Cab Wala</h5>
+                    </a>
+
+                    <p>Online Cab Booking System.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://www.canva.com/design/DAEeKPPTsHg/WJdAT8_oJ965vhHkent0OQ/watch?utm_content=DAEeKPPTsHg&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu"
+                        target="_blank">
+                        <!-- <i class="fa-solid fa-pen-ruler"></i> -->
+                        <img src="Canva.png" width="50" alt="">
+                        <h5>Sort Video</h5>
+
+                    </a>
+
+                    <p>Colorfull Brushstrokes and Illustrator Collection</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://www.canva.com/design/DAEdDWahQVI/EJVXHM3CdhtH-AUNXam6ow/view?utm_content=DAEdDWahQVI&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu"
+                        target="_blank">
+                        <img src="Canva.png" width="50" alt="">
+                        <h5>Poster</h5>
+
+                    </a>
+
+                    <p>Wedding Poster.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+
+
+                <div class="card-content">
+                    <a href="https://www.canva.com/design/DAEeKeJHsnE/ZJzuGhQxN-Vysvdrka4rMg/watch?utm_content=DAEeKeJHsnE&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu"
+                        target="_blank">
+                        <!-- <i class="fa-brands fa-pied-piper-square"></i> -->
+                        <img src="Canva.png" width="50" alt="">
+                        <h5>Moments</h5>
+                    </a>
+                    <p>A few Moments letter.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="app.html" target="_blank">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <h5>Project-5</h5>
+
+                    </a>
+
+                    <p>Updating Soon...</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="web.html" target="_blank">
+                        <i class="fa-solid fa-fill-drip"></i>
+                        <h5>Project-6</h5>
+                    </a>
+
+                    <p>Updating Soon...</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+        </div>
+    </section>
+
+
+    <!-------------- Blogs Section -------------->
+    <section id="blogs">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>Recent News</h2>
+            </div>
+            <div class="animate-bar"></div>
+            <div class="sub-heading">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, egestas. Id fermentum nullam ipsum
+                    massa.</p> -->
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Blog Item Start -->
+            <div class="blog blog-1" data-aos="fade-right" data-aos-duration="1200">
+                <div class="img-box">
+                    <img src="Blog-img-1.jpg" alt="">
+                </div>
+                <h6>Ten Mind-Blowing Reasons Why Design Is Using This Technique For Exposure.</h6>
+                <p>Integer vitae mi libero. Aliquam consequat dolor libero, nec varius elit</p>
+                <button><a href="#">Read More</a></button>
+            </div>
+            <!-- Blog Item End -->
+            <!-- Blog Item Start -->
+            <div class="blog blog-2" data-aos="fade-right" data-aos-duration="1200">
+                <div class="img-box">
+                    <img src="Blog-img-2.jpg" alt="">
+                </div>
+                <h6>Ten Mind-Blowing Reasons Why Design Is Using This Technique For Exposure.</h6>
+                <p>Integer vitae mi libero. Aliquam consequat dolor libero, nec varius elit</p>
+                <button><a href="#">Read More</a></button>
+            </div>
+            <!-- Blog Item End -->
+            <!-- Blog Item Start -->
+            <div class="blog blog-3" data-aos="fade-right" data-aos-duration="1200">
+                <div class="img-box">
+                    <img src="Blog-img-3.jpg" alt="">
+                </div>
+                <h6>Ten Mind-Blowing Reasons Why Design Is Using This Technique For Exposure.</h6>
+                <p>Integer vitae mi libero. Aliquam consequat dolor libero, nec varius elit</p>
+                <button><a href="#">Read More</a></button>
+            </div>
+            <!-- Blog Item End -->
+        </div>
+    </section>
+
+
+    <!-------------- Contact Section -------------->
+    <section id="contact">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>Connect with me:</h2>
+            </div>
+            <div class="animate-bar"></div>
+        </div>
+
+        <p align="center">
+            <a href="https://linkedin.com/in/-ankitsonkar-" target="blank">
+                <img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg"
+                    alt="-ankitsonkar-" height="30" width="40" /></a>
+            <a href="https://github.com/ankit-neticon" target="_blank"><img align="center" src="GitW.png"
+                    alt="ankit-neticon" height="32" width="33" /></a>
+
+            <a href="https://www.hackerrank.com/ankit_bps2000" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg"
+                    alt="ankit_bps2000" height="70" width="40" /></a>
+
+            <a href="https://www.leetcode.com/_ankitsonkar_" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg"
+                    alt="_ankitsonkar_" height="30" width="40" /></a>
+
+            <a href="https://instagram.com/__ankitsonkar__" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg"
+                    alt="__ankitsonkar__" height="30" width="40" /></a>
+
+            <a href="https://fb.com/ankit.sonkar3000" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg"
+                    alt="ankit.sonkar3000" height="30" width="40" /></a>
+
+            <a href="https://twitter.com/@_ankitsonkar_" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg"
+                    alt="@_ankitsonkar_" height="30" width="40" /></a>
+            <a href="https://join.skype.com/invite/yagF7g3sbKnA" target="blank"><img align="center"
+                    src="https://secure.skypeassets.com/content/dam/skype/images/misc/app-tile.png" alt="@_ankitsonkar_"
+                    width="35" /></a>
+        </p>
+    </section>
+
+
+
+
+
+
+
+    <!-------------- Footer -------------->
+    <footer>
+        <!-- <p>AnkitSonkar &copy All Rights Reserved 2022</p> -->
+        <h6>All Rights Reserved &copy AnkitSonkar 2022</h6>
+
+        <img src="Indian.png" height="18" width="18" alt="INDIA"><span>INDIA</span></a>
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+    <!-------------- Jquery Scripts -------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-------------- Owl Carousel Scripts -------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-------------- AOS Scripts -------------->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-------------- Local Script -------------->
+    <!-- <script src="/script.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,2471 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Web Ideas -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="x-icon" href="AS.png">
+    <title>AnkitSonkar</title>
+    <!-------------- Local Stylesheet Link -------------->
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+
+
+    <!-- ----------------Fevicon inks------------------ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-------------- Font Awesome Link -------------->
+    <script src="https://kit.fontawesome.com/de270889e1.js" crossorigin="anonymous"></script>
+
+
+    <!-- Navbar script -->
+
+    <script>
+        //---------- Navbar ----------//
+
+        window.addEventListener('scroll', function () {
+            let navbar = document.getElementById("navbar");
+            navbar.classList.toggle('fixed', this.window.scrollY > 0)
+        })
+
+        // Portfolio Gallery
+
+        let filterContainer = document.querySelector(".gallery-filter");
+        let galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterContainer.addEventListener("click", (event) => {
+            if (event.target.classList.contains("filter-item")) {
+                // deactivates existing active filter item
+                filterContainer.querySelector(".active").classList.remove("active");
+                // activates new filter item
+                event.target.classList.add("active");
+                let filterValue = event.target.getAttribute("data-filter");
+                galleryItems.forEach((item) => {
+                    if (item.classList.contains(filterValue) || filterValue === "all") {
+                        item.classList.remove("hide");
+                        item.classList.add("show");
+                    }
+                    else {
+                        item.classList.remove("show");
+                        item.classList.add("hide");
+                    }
+                });
+            }
+
+        });
+
+        // Review Carousel
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1200: {
+                    items: 2
+                }
+            }
+        })
+    </script>
+
+
+    <!-------------- Owl Carousel Links -------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-------------- AOS Link -------------->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        /* <================= Google Font Link (Nunito) =================> */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
+
+        /* <================= CSS Reset =================> */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            line-height: 1.7;
+            background-color: black;
+            min-height: 200vh;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            color: white;
+            background-color: crimson;
+        }
+
+        /* <================= Scroll Bar =================> */
+        ::-webkit-scrollbar {
+            width: 10px;
+            background-color: black;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #bfbfbf;
+            border-radius: 10px;
+        }
+
+        /* <================= CSS Variables =================> */
+        :root {
+            --font-large-color: white;
+            --font-small-color: #9f9f9f;
+            --main-color: #FF2626;
+            --bg-color-1: #131416;
+            --bg-color-2: #191a20;
+        }
+
+        h1 {
+            font-size: 90px;
+            color: var(--font-large-color);
+        }
+
+        h2 {
+            font-size: 46px;
+            color: var(--font-large-color);
+        }
+
+        h2 span {
+            color: #FF2626;
+            font-size: 46px;
+        }
+
+        h3 {
+            font-size: 34px;
+        }
+
+        h4 {
+            font-size: 30px;
+        }
+
+        h5 {
+            font-size: 20px;
+        }
+
+        h5 span {
+            color: #FF2626;
+            font-size: 20px;
+
+        }
+
+        p,
+        span {
+            font-size: 17px;
+            color: var(--font-small-color);
+        }
+
+        /* <================= Reusable Classes =================> */
+        .container {
+            padding: 30px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: transparent;
+            font-size: 17px;
+            outline: none;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .btn a {
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--main-color);
+            border-color: var(--main-color);
+        }
+
+        .heading-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 100px;
+        }
+
+        .animate-bar {
+            width: 10rem;
+            height: 4px;
+            background-color: var(--main-color);
+            margin-top: 2px;
+            position: relative;
+        }
+
+        .animate-bar::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+            animation: animate 3s linear infinite;
+        }
+
+        @keyframes animate {
+            from {
+                left: 0%;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        .sub-heading {
+            max-width: 40rem;
+            text-align: center;
+            margin-top: 30px;
+            padding: 0 1rem;
+        }
+
+        /* <================= Navbar =================> */
+        #navbar {
+            height: 7rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        #navbar.fixed {
+            position: fixed;
+            height: 5rem;
+            /* background-color: #131416; */
+            background-color: black;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #navbar .logo {
+            width: 3rem;
+            margin-left: 5rem;
+            z-index: 5;
+        }
+
+        #navbar .logo img {
+            width: 100%;
+        }
+
+        #navbar .nav-items {
+            display: flex;
+            list-style: none;
+            margin-right: 5rem;
+        }
+
+        #navbar .nav-items li {
+            margin: 0 1rem;
+        }
+
+        #navbar .nav-items li a {
+            text-decoration: none;
+            /* color: #c1c1c1; */
+            color: #FF2626;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        #navbar .nav-items li a:hover {
+            color: white;
+        }
+
+
+
+
+
+        #navbar .nav-items li i {
+            font-size: 25px;
+            color: var(--main-color);
+            margin-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        #navbar .nav-items li i:hover {
+            color: white;
+        }
+
+
+        #bar {
+            height: 7rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        #bar.fixed {
+            position: fixed;
+            height: 5rem;
+            /* background-color: #131416; */
+            background-color: black;
+            transition: all 0.3s ease-in-out;
+        }
+
+
+
+
+        /* <================= Home Again =================> */
+        #home {
+            background: black;
+            width: 100%;
+        }
+
+        #home .container {
+            padding: 150px 0;
+        }
+
+        #home .container .about-img {
+            width: 38rem;
+        }
+
+        .home-img img {
+            width: 100%;
+            border: 10px solid #232323;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+        }
+
+        #home .text-wrapper {
+            width: 35rem;
+            padding-left: 40px;
+        }
+
+        #home .text-wrapper h1 span {
+            color: #FF2626;
+            font-size: 90px;
+        }
+
+        #home .text-wrapper h2 span {
+            color: #FF2626;
+        }
+
+        #home .text-wrapper h3 span {
+            color: #FF2626;
+            font-size: 35px;
+        }
+
+        #home .text-wrapper h4 {
+            font-weight: 500;
+        }
+
+        #home .text-wrapper h5 {
+            margin-top: 15px;
+        }
+
+        #home .text-wrapper h5 span {
+            color: var(--main-color);
+        }
+
+        #home .text-wrapper p {
+            margin: 20px 0;
+        }
+
+        #home .about-list {
+            margin: 10px 0;
+        }
+
+        #home .about-list .list-item {
+            display: inline-flex;
+            width: 16rem;
+            margin-bottom: 1rem;
+        }
+
+        #home .about-list .list-item label {
+            font-size: 15px;
+            font-weight: 700;
+            width: 90px;
+            border-right: 1px solid #c1c1c1;
+        }
+
+        #home .about-list .list-item p {
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        #about .btn {
+            margin: 0;
+        }
+
+
+
+        /* social icons */
+
+
+        #home .social-icons {
+            left: 5rem;
+            bottom: 2rem;
+            /* position: absolute; */
+            bottom: -5rem;
+            z-index: 2;
+            right: 3rem;
+        }
+
+        #home .social-icons a {
+            text-decoration: none;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            background-color: white;
+            border-radius: 50%;
+            line-height: 35px;
+            margin-right: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: .4s ease-in-out;
+            cursor: pointer;
+        }
+
+        #home .social-icons a i {
+            color: #1c1d24;
+        }
+
+        #home .social-icons a:hover {
+            transform: translateY(-10%);
+            background-color: var(--main-color);
+        }
+
+        #home .social-icons a:hover i {
+            color: white;
+        }
+
+        #home .scroll-txt {
+            position: absolute;
+            left: 5rem;
+            bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        #home .scroll-txt a {
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            cursor: pointer;
+            transition: letter-spacing 0.5s ease;
+            text-align: left;
+        }
+
+        #home .scroll-txt a:hover {
+            letter-spacing: 2px;
+            color: var(--main-color);
+        }
+
+        /* <================= About =================> */
+        #about {
+            background: var(--bg-color-1);
+            width: 100%;
+        }
+
+        #about .container {
+            padding: 100px 0;
+        }
+
+        .about-img {
+            width: 26rem;
+        }
+
+        .about-img img {
+            width: 100%;
+            border: 10px solid #232323;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+        }
+
+        #about .text-wrapper {
+            width: 35rem;
+            padding-left: 40px;
+        }
+
+        #about .text-wrapper h4 {
+            font-weight: 500;
+        }
+
+        #about .text-wrapper h5 {
+            margin-top: 15px;
+        }
+
+        #about .text-wrapper h5 span {
+            color: var(--main-color);
+        }
+
+        #about .text-wrapper p {
+            margin: 20px 0;
+        }
+
+        #about .about-list {
+            margin: 10px 0;
+        }
+
+        #about .about-list .list-item {
+            display: inline-flex;
+            width: 16rem;
+            margin-bottom: 1rem;
+        }
+
+        #about .about-list .list-item label {
+            font-size: 15px;
+            font-weight: 700;
+            width: 90px;
+            border-right: 1px solid #c1c1c1;
+        }
+
+        #about .about-list .list-item p {
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        #about .btn {
+            margin: 0;
+        }
+
+        /* <================= Services =================> */
+        #services {
+            /* background-color: var(--bg-color-2); */
+            background-color: black;
+        }
+
+        #services .animate-bar::before {
+            border-color: var(--bg-color-2);
+        }
+
+        .service-card .card-content {
+            width: 22rem;
+            padding: 55px 40px;
+            margin: 15px;
+            background-color: #131416;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+            transition: all 0.3s ease-in;
+        }
+
+        .service-card .card-content:hover {
+            transform: translateY(-5%);
+            background-color: #1a1a1a;
+        }
+
+        .service-card .card-content i {
+            font-size: 50px;
+            color: var(--main-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card .card-content h5 {
+            margin-bottom: 10px;
+        }
+
+        /* <================= logo section =================> */
+        #logo {
+            /* background-color: var(--bg-color-2); */
+            background-color: black;
+        }
+
+        #logo .animate-bar::before {
+            border-color: var(--bg-color-2);
+        }
+
+        .logo-card .card-content {
+            width: 22rem;
+            padding: 55px 40px;
+            margin: 15px;
+            background-color: #131416;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+            transition: all 0.3s ease-in;
+        }
+
+        .logo-card .card-content:hover {
+            transform: translateY(-5%);
+            background-color: #1a1a1a;
+        }
+
+        .logo-card .card-content i {
+            font-size: 50px;
+            color: var(--main-color);
+            margin-bottom: 20px;
+        }
+
+        .logo-card .card-content h5 {
+            margin-bottom: 10px;
+        }
+
+        /* <================= lattofatto section =================> */
+        #lfd {
+            /* background-color: var(--bg-color-2); */
+            background-color: black;
+        }
+
+        #lfd .animate-bar::before {
+            border-color: var(--bg-color-2);
+        }
+
+        .lfd-card .card-content {
+            width: 22rem;
+            padding: 55px 40px;
+            margin: 15px;
+            background-color: #131416;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+            transition: all 0.3s ease-in;
+        }
+
+
+        /* <================= OTT section =================> */
+        #ott {
+            /* background-color: var(--bg-color-2); */
+            background-color: black;
+        }
+
+        #ott .animate-bar::before {
+            border-color: var(--bg-color-2);
+        }
+
+        .ott-card .card-content {
+            width: 22rem;
+            padding: 55px 40px;
+            margin: 15px;
+            background-color: #131416;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+            transition: all 0.3s ease-in;
+        }
+
+        /* <================= Insta section =================> */
+        #insta {
+            /* background-color: var(--bg-color-2); */
+            background-color: black;
+        }
+
+        #insta .animate-bar::before {
+            border-color: var(--bg-color-2);
+        }
+
+        .insta-card .card-content {
+            width: 22rem;
+            padding: 55px 40px;
+            margin: 15px;
+            background-color: #131416;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+            transition: all 0.3s ease-in;
+        }
+
+
+
+        /* <================= Resume =================> */
+        #resume {
+            background-color: var(--bg-color-1);
+        }
+
+        #resume .container {
+            gap: 2rem;
+        }
+
+        #resume .animate-bar::before {
+            border-color: var(--bg-color-1);
+        }
+
+        #resume .title {
+            margin-bottom: 10px;
+        }
+
+        .resume-item {
+            width: 34rem;
+            padding: 32px 40px;
+            background-color: #191a20;
+            border-left: 2px solid var(--main-color);
+            position: relative;
+            border-bottom: 1px solid #313131;
+        }
+
+        .resume-item:last-child {
+            border-bottom: none;
+        }
+
+        .resume-item .item-arrow {
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            left: 0;
+            top: 2.5rem;
+            background-color: var(--main-color);
+        }
+
+        .resume-item .item-arrow::after {
+            content: "";
+            position: absolute;
+            border: 8px solid transparent;
+            left: 16px;
+            border-left-color: var(--main-color);
+        }
+
+        .resume-item h5 {
+            color: #FF2626;
+        }
+
+
+        .resume-item span {
+            color: white;
+        }
+
+
+
+        /* -----------------------------Skills Section-------------------- */
+        #skills {
+            padding-bottom: 100px;
+            background-color: black;
+        }
+
+        #skills .heading-wrapper {
+            padding-top: 50px;
+        }
+
+
+
+        /* #skills .heading-wrapper .heading i:hover{
+    color: white;
+} */
+
+
+        .progress-item .progress-bar {
+            width: 35rem;
+            height: 8px;
+            /* background-color: black; */
+            background-color: var(--bg-color-2);
+        }
+
+
+
+
+        .progress-item .progress-bar .progress-line {
+            height: 100%;
+            background-color: var(--main-color);
+            position: relative;
+        }
+
+
+        .progress-item .progress-bar .progress-line::after {
+            content: "90%";
+            position: absolute;
+            color: white;
+            font-size: 17px;
+            top: -30px;
+            right: -15px;
+        }
+
+        .progress-bar .progress-line.CPP {
+            width: 90%;
+        }
+
+        .progress-bar .progress-line.Java {
+            width: 70%;
+        }
+
+        .progress-bar .progress-line.html {
+            width: 90%;
+        }
+
+        /* .progress-bar .progress-line.react{
+    width: 75%;
+} */
+
+        .progress-bar .progress-line.css {
+            width: 80%;
+        }
+
+        .progress-bar .progress-line.js {
+            width: 70%;
+        }
+
+        .progress-bar .progress-line.python {
+            width: 75%;
+        }
+
+        .progress-bar .progress-line.android {
+            width: 60%;
+        }
+
+        .progress-bar .progress-line.sql {
+            width: 60%;
+        }
+
+        /* .progress-bar .progress-line.django{
+    width: 65%;
+} */
+
+
+
+        .progress-bar .progress-line.CPP::after {
+            content: "90%";
+        }
+
+        .progress-bar .progress-line.Java::after {
+            content: "70%";
+        }
+
+
+        .progress-bar .progress-line.html::after {
+            content: "90%";
+        }
+
+        /* .progress-bar .progress-line.react::after{
+    content: "75%";
+} */
+        .progress-bar .progress-line.css::after {
+            content: "80%";
+        }
+
+        .progress-bar .progress-line.js::after {
+            content: "70%";
+        }
+
+        .progress-bar .progress-line.python::after {
+            content: "75%";
+        }
+
+
+        .progress-bar .progress-line.android::after {
+            content: "60%";
+        }
+
+        .progress-bar .progress-line.sql::after {
+            content: "60%";
+        }
+
+        /* .progress-bar .progress-line.django::after{
+    content: "65%";
+} */
+
+
+
+        /* -------------Tools------------------------------- */
+
+        #tools {
+            padding-bottom: 100px;
+        }
+
+        #tools p a {
+            padding-top: 50px;
+        }
+
+        .tools {
+            padding: 20px;
+        }
+
+        .tools p a {
+            margin-right: 15px;
+        }
+
+
+
+        /* <================= Portfolio =================> */
+        #portfolio {
+            padding: 100px 0;
+            background-color: var(--bg-color-2);
+        }
+
+        #portfolio .animate-bar::before {
+            border-color: var(--bg-color-2);
+        }
+
+        .gallery-wrapper {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .gallery-wrapper .gallery-nav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .gallery-wrapper .gallery-nav .gallery-filter {
+            padding: 0 15px;
+            margin: 40px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .gallery-wrapper .gallery-filter .filter-item {
+            color: white;
+            font-size: 17px;
+            display: inline-block;
+            cursor: pointer;
+            margin: 8px 20px 8px 20px;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .gallery-wrapper .gallery-filter .filter-item::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            bottom: -5px;
+            left: 50%;
+            height: 2px;
+            display: block;
+            background-color: var(--main-color);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .gallery-wrapper .gallery-filter .filter-item.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 50vh;
+        }
+
+        .gallery-item {
+            width: calc(100% / 3);
+            padding: 15px;
+        }
+
+        .gallery-item.show {
+            animation: fade-in 0.5s ease;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .gallery-item.hide {
+            display: none;
+        }
+
+        .gallery-item .gallery-item-inner {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item .gallery-item-inner:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .gallery-item-inner img {
+            width: 100%;
+            box-shadow: -2px 3px 15px black;
+            vertical-align: middle;
+        }
+
+        .gallery-item .gallery-item-inner .overlay {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.9);
+            transition: opacity 0.1s ease-in;
+        }
+
+        .gallery-item .gallery-item-inner .overlay p {
+            color: var(--main-color);
+            font-size: 20px;
+            font-weight: 600;
+            padding-top: 5px;
+        }
+
+        /* <================= Reviews =================> */
+        #reviews {
+            padding: 0 7rem;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* background-color: var(--bg-color-1); */
+            background-color: black;
+        }
+
+        .owl-carousel .item {
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .owl-carousel .item .img-box {
+            width: 20rem;
+            border-radius: 50%;
+            border: 3px solid white;
+            overflow: hidden;
+        }
+
+        .owl-carousel .item .img-box img {
+            width: 100%;
+        }
+
+        .owl-carousel .item .text-holder {
+            padding-left: 30px;
+        }
+
+        .owl-carousel .item .text-holder .details {
+            font-size: 16px;
+        }
+
+        .owl-carousel .item .text-holder .name {
+            font-size: 15px;
+            padding-top: 15px;
+            line-height: 0.8;
+        }
+
+        .owl-carousel .item .text-holder .rating i {
+            font-size: 12px;
+            color: #ffc800;
+        }
+
+        .owl-carousel .item .text-holder .rating span {
+            font-size: 13px;
+        }
+
+        .owl-dot span {
+            width: 12px !important;
+            height: 12px !important;
+            border: 1px solid var(--main-color);
+            background-color: transparent !important;
+        }
+
+        .owl-dot.active span {
+            background-color: var(--main-color) !important;
+        }
+
+        /* <================= Blog =================> */
+        #blogs {
+            min-height: 100vh;
+            background-color: var(--bg-color-2);
+        }
+
+        #blogs .animate-bar::before {
+            border-color: var(--bg-color-2);
+        }
+
+        .blog {
+            width: 22rem;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
+            margin: 10px;
+            padding: 10px;
+            background-color: #131416;
+            position: relative;
+        }
+
+        .blog .img-box {
+            width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .blog .img-box img {
+            width: 100%;
+            transition: all 0.3s ease-in;
+        }
+
+        .blog .img-box img:hover {
+            transform: scale(1.2);
+        }
+
+        .blog h6 {
+            margin-top: 15px;
+            font-size: 18px;
+            line-height: normal;
+            cursor: pointer;
+        }
+
+        .blog p {
+            margin-top: 10px;
+        }
+
+        .blog button {
+            margin-top: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .blog button a {
+            text-decoration: none;
+            font-size: 15px;
+            color: #878e99;
+        }
+
+        .blog button:hover a {
+            color: white;
+        }
+
+        .blog::before {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 15px;
+            color: white;
+            background-color: var(--main-color);
+            padding: 5px;
+            z-index: 2;
+        }
+
+        .blog-1::before {
+            content: "14th Feb";
+        }
+
+        .blog-2::before {
+            content: "10th Aug";
+        }
+
+        .blog-3::before {
+            content: "15th Nov";
+        }
+
+        /* <================= Contact =================> */
+        #contact {
+            /* background-color: var(--bg-color-1); */
+            background-color: black;
+        }
+
+        #contact .animate-bar::before {
+            border-color: var(--bg-color-1);
+        }
+
+        #contact .container {
+            align-items: flex-start;
+            gap: 2.5rem;
+        }
+
+        #contact p a img {
+            margin-top: 30px;
+            margin-left: 15px;
+            display: inline-block;
+            /* background-color: white; */
+        }
+
+
+        #contact form {
+            width: 50%;
+        }
+
+        form .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .form-row .input-data {
+            width: 50%;
+            display: block;
+        }
+
+        .input-data input,
+        textarea {
+            background-color: #1c1d24;
+            width: 100%;
+            display: block;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid transparent;
+            font-size: 17px;
+            margin-top: 20px;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .input-data textarea {
+            padding: 10px 10px 120px;
+        }
+
+        .input-data input:focus,
+        textarea:focus {
+            border-bottom-color: var(--main-color);
+        }
+
+        #contact .contact-info {
+            width: 40%;
+        }
+
+        #contact .contact-list {
+            list-style: none;
+            padding-top: 20px;
+        }
+
+        .contact-list .list-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-list .list-item .icon i {
+            font-size: 30px;
+            padding-right: 20px;
+            color: var(--main-color);
+        }
+
+        .contact-list .list-item .details {
+            padding: 15px;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            flex-direction: column;
+            border-left: 1px solid #878e99;
+            line-height: 22px;
+        }
+
+        .contact-list .list-item .details label {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .contact-list .list-item .details p {
+            font-size: 15px;
+        }
+
+        /* <================= Footer =================> */
+        footer {
+            background-color: var(--bg-color-1);
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer img {
+            margin-left: 1rem;
+        }
+
+        footer span {
+            margin-left: 5px;
+            color: white;
+        }
+
+        /* <================= Responsive =================> */
+
+        /* Hamburger */
+        #navbar .checkbox {
+            position: absolute;
+            width: 32px;
+            height: 26px;
+            right: 2.5rem;
+            opacity: 0;
+            display: none;
+        }
+
+        .hamburger-lines {
+            position: absolute;
+            width: 32px;
+            height: 26px;
+            right: 2.5rem;
+            pointer-events: none;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 2;
+            display: none;
+        }
+
+        .hamburger-lines .line {
+            display: block;
+            height: 4px;
+            width: 100%;
+            border: 10px;
+            background-color: #f8f8f8;
+        }
+
+        .hamburger-lines .line1 {
+            transform-origin: 0% 0%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .hamburger-lines .line2 {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .hamburger-lines .line3 {
+            transform-origin: 0% 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        input[type="checkbox"]:checked~.hamburger-lines .line1 {
+            transform: rotate(45deg);
+        }
+
+        input[type="checkbox"]:checked~.hamburger-lines .line2 {
+            transform: scale(0);
+        }
+
+        input[type="checkbox"]:checked~.hamburger-lines .line3 {
+            transform: rotate(-45deg);
+        }
+
+        /* Media Queries */
+        @media (max-width: 950px) {
+            #navbar .nav-items {
+                position: fixed;
+                flex-direction: column;
+                gap: 20px;
+                top: 0;
+                left: -100%;
+                background-color: #131416;
+                width: 300px;
+                height: 100%;
+                padding-top: 8rem;
+                padding-left: 2rem;
+                transition: all 0.5s ease-in-out;
+            }
+
+            input[type="checkbox"]:checked~.nav-items {
+                left: 0% !important;
+            }
+
+            #navbar .checkbox {
+                display: block;
+            }
+
+            .hamburger-lines {
+                display: flex;
+            }
+
+            #navbar .logo {
+                margin-left: 1.5rem;
+            }
+
+            #about .container .about-img {
+                width: 20rem;
+            }
+        }
+
+        @media (max-width: 850px) {
+            #navbar .checkbox {
+                right: 2.5rem;
+            }
+
+            #home .text-holder {
+                text-align: center;
+            }
+
+            #home .text-holder h1,
+            #home .text-holder h1 span {
+                font-size: 45px;
+            }
+
+            #home .text-holder h3,
+            #home .text-holder h3 span {
+                font-size: 20px;
+            }
+
+            #home .scroll-txt {
+                display: none;
+            }
+
+            #home .social-icons {
+                width: 100%;
+                text-align: center;
+                right: 0;
+            }
+
+            #about .container .text-wrapper {
+                padding-left: 120px;
+            }
+
+            .service-card .card-content {
+                width: 100%;
+                margin: 15px 0;
+            }
+
+            #blogs .blog {
+                width: 100%;
+            }
+
+            .container {
+                padding: 0 80px;
+            }
+
+            #portfolio .gallery-item {
+                width: 50%;
+            }
+
+            #contact .contact-info,
+            #contact form {
+                width: 40rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            #portfolio .gallery-item {
+                padding: 15px 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            #home .hero-img {
+                display: none;
+            }
+
+            #about .container {
+                padding: 100px 20px;
+                justify-content: flex-start;
+            }
+
+            #about .container .text-wrapper {
+                padding: 0;
+            }
+
+            #resume .container .resume-item {
+                width: 100%;
+            }
+
+            #skills .container {
+                padding: 0 1.5rem;
+            }
+
+            #skills .container .progress-item {
+                width: 100%;
+            }
+
+            #skills .container .progress-item .progress-bar {
+                width: 100%;
+            }
+
+            #reviews {
+                padding: 0 20px;
+                height: auto;
+            }
+
+            .owl-carousel .item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .owl-carousel .item .img-box {
+                width: 8rem;
+                margin-bottom: 20px;
+            }
+
+            .owl-carousel .item .text-holder {
+                padding: 0;
+            }
+
+            .owl-carousel .owl-dot {
+                padding: 0 !important;
+            }
+        }
+
+        @media (max-width: 467px) {
+            #portfolio .gallery-item {
+                width: 100%;
+            }
+
+            #portfolio .gallery-filter .filter-item {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-------------- Navbar -------------->
+    <header>
+        <nav id="navbar" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1800">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="AS.png" alt="">
+                </a>
+            </div>
+            <!-- Hamurger -->
+            <input type="checkbox" class="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+
+            <ul class="nav-items">
+                <li><a href="#home"><i class="fa-solid fa-house-user"></i>HOME</a></li>
+                <li><a href="#about"><i class="fa-solid fa-circle-info"></i>ABOUT</a></li>
+                <li><a href="#services"><i class="fa-solid fa-user-gear"></i>WORKS</a></li>
+                <li><a href="#resume"><i class="fa-solid fa-graduation-cap"></i> RESUME</a></li>
+                <li><a href="#portfolio"> <i class="fa-solid fa-briefcase"></i>PORTFOLIO</a></li>
+                <li><a href="#blogs"><i class="fa-solid fa-blog"></i>BLOGS</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-address-book"></i>CONTACT</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-------------- Home Section -------------->
+    <section id="home">
+        <div class="container">
+
+            <div class="text-wrapper" data-aos="fade-right" data-aos-duration="1200">
+                <h2><span>H!</span> There, <span>I'M</span> </h2>
+                <h1 data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1000">Ankit <span>Sonkar</span></h1>
+                <h3 data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1200"><span>Developer </span>& Designer
+                </h3>
+                <button class="btn">
+                    <a href="#portfolio">View My Works</a>
+                </button>
+            </div>
+
+            <div class="about-img" data-aos="fade-right" data-aos-duration="1200">
+                <img src="DSC0324.jpg" alt="">
+            </div>
+
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/-ankitsonkar-" target="_blank"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/ankit-neticon" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://fb.com/ankit.sonkar3000" target="blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://instagram.com/__ankitsonkar__" target="blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/@_ankitsonkar_" target="blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://join.skype.com/invite/yagF7g3sbKnA" target="blank"><i
+                        class="fa-brands fa-skype"></i></a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-------------- About Section -------------->
+    <section id="about">
+        <div class="container">
+            <div class="about-img" data-aos="fade-right" data-aos-duration="1200">
+                <img src="DSC.jpg" alt="">
+            </div>
+            <div class="text-wrapper" data-aos="fade-right" data-aos-duration="1200">
+                <h4>Ankit Sonkar</h4>
+                <h5>I am a Fresher, <span>Software Developer</span> based in <span>India</span></h5>
+                <p>A highly motivated, well qualified individual with thorough experience in the knowledge of languages
+                    and development tools. Looking for a position in a reputed, dynamic company where I can utilise my
+                    skills to the benefits of the company while also keeping the room to evolve my own abilities.</p>
+                <div class="about-list">
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>Birthday</label>
+                        <p>18th January 2000</p>
+                    </div>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>E-mail</label>
+                        <p>ankit.vns2000@gmail.com</p>
+                    </div>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>Age</label>
+                        <p>22 Yr</p>
+                    </div>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>Phone</label>
+                        <p>+91-6306317498</p>
+                    </div>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>Residence</label>
+                        <p>Varanasi</p>
+                    </div>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>Skype</label>
+                        <p>.cid.4b00bb450ced9956</p>
+                    </div>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>Address</label>
+                        <p>Uttar Pradesh, India</p>
+                    </div>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <div class="list-item">
+                        <label>Freelance</label>
+                        <p>Available</p>
+                    </div>
+                    <!-- List Item End -->
+                </div>
+                <button class="btn"><a
+                        href="https://docs.google.com/document/d/1O1WzhkOt9HU5C8Ugyx9l5RFyhIMO0DXjz2jb7DKpRkI/edit?usp=sharing"
+                        target="_blank">Download CV</a></button>
+            </div>
+        </div>
+    </section>
+
+    <!-------------- Services Section -------------->
+    <section id="services">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>My Works</h2>
+            </div>
+            <div class="animate-bar"></div>
+            <div class="sub-heading">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, egestas. Id fermentum nullam ipsum
+                    massa.</p> -->
+            </div>
+        </div>
+        <div class="container">
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="projects.html" target="_blank">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <h5>My Projects</h5>
+                    </a>
+
+                    <p>Academic projects.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="dev.html" target="_blank">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <h5>Developement</h5>
+
+                    </a>
+
+                    <p>Developed websites.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="graphic.html" target="_blank">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                        <h5>Graphic</h5>
+
+                    </a>
+
+                    <p>Graphic designs.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+
+
+                <div class="card-content">
+                    <a href="Logo.html" target="_blank">
+                        <i class="fa-brands fa-pied-piper-square"></i>
+                        <h5>Logo Design</h5>
+                    </a>
+                    <p>Logo designs using Figma and Canva.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="app.html" target="_blank">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <h5>App Design</h5>
+
+                    </a>
+
+                    <p>Android Apps.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="web.html" target="_blank">
+                        <i class="fa-solid fa-fill-drip"></i>
+                        <h5>Web Design</h5>
+                    </a>
+
+                    <p>Developed websites using Figma</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+        </div>
+    </section>
+
+    <!-------------- Resume Section -------------->
+    <section id="resume">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>Resume</h2>
+            </div>
+            <div class="animate-bar"></div>
+            <div class="sub-heading">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, egestas. Id fermentum nullam ipsum
+                    massa.</p> -->
+            </div>
+        </div>
+        <div class="container">
+
+            <!-------------- Experience Part -------------->
+            <!-- <div class="experience" data-aos="fade-right" data-aos-duration="1200">
+                <div class="title">
+                    <h4>Experience</h4>
+                </div>
+
+                Resume Item Start
+                <div class="resume-item">
+                    <div class="item-arrow"></div>
+                    <h5>Software Engineer</h5>
+                    <span>Adobe / 2015 - 2017</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Optio quo repudiandae</p>
+                </div>
+                Resume Item End
+
+                Resume Item Start
+                <div class="resume-item">
+                    <div class="item-arrow"></div>
+                    <h5>Back-End Developer</h5>
+                    <span>Google / 2017 - 2018</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Optio quo repudiandae</p>
+                </div>
+                Resume Item End
+
+                Resume Item Start
+                <div class="resume-item">
+                    <div class="item-arrow"></div>
+                    <h5>Graphic Designer</h5>
+                    <span>Discord / 2019 - Present</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Optio quo repudiandae</p>
+                </div>
+                Resume Item End
+            </div> -->
+
+            <!-------------- Education Part -------------->
+            <div class="education" data-aos="fade-right" data-aos-duration="1200">
+                <div class="title">
+                    <h4>Education <i class="fa-solid fa-graduation-cap"></i></h4>
+
+                </div>
+
+                <!-- Resume Item Start -->
+                <div class="resume-item">
+                    <div class="item-arrow"></div>
+                    <h5>B.Tech in Computer Science and Engineering || 2022</h5>
+                    <!-- <h6>Grade Point: 8.23</h6> -->
+                    <div class="bachelor">
+                        <!-- <span>Institute of Technology, Guru Ghasidas University</span> -->
+                    </div>
+                    <span>School of Studies in Engineering and Technology, Guru Ghasidas Vishwavidyalaya, Bilaspur, C.G</span>
+                    <p>A Central University established by the Central University Act 2009 No. 25 of 2009</p>
+                </div>
+                <!-- Resume Item End -->
+
+                <!-- Resume Item Start -->
+                <div class="resume-item">
+                    <div class="item-arrow"></div>
+                    <h5>Intermediate || 2017</h5>
+                    <!-- <h6>Percentage: 71.60%</h6> -->
+                    <div class="inter">
+                        <span>Lal Bahadur Shikshan Sansthan Intermediate College, Varanasi, UP</span>
+                    </div>
+                    <!-- <span>Lal Bahadur Shikshan Sansthan Intermediate College, Varanasi, UP</span> -->
+                    <p>Uttar Pradesh State Board of High School and Intermediate Education.</p>
+                </div>
+                <!-- Resume Item End -->
+
+                <!-- Resume Item Start -->
+                <div class="resume-item">
+                    <div class="item-arrow"></div>
+                    <h5>High-School || 2015</h5>
+                    <!-- <h6>Percentage: 77.83%</h6> -->
+                    <div class="high">
+                        <span>Lal Bahadur Shikshan Sansthan Intermediate College, Varanasi, UP</span>
+                    </div>
+                    <!-- <span></span> -->
+                    <p>Uttar Pradesh State Board of High School and Intermediate Education.</p>
+                </div>
+                <!-- Resume Item End -->
+            </div>
+        </div>
+
+        <!-------------- Skills Section -------------->
+        <section id="skills">
+            <div class="heading-wrapper">
+                <div class="heading">
+                    <h2>My Skills <i class="fa-solid fa-code"></i></h2>
+                </div>
+                <div class="animate-bar"></div>
+            </div>
+
+            <div class="container">
+
+                <!-- Progress Item start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>Android</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line android"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+                <!-- Progress Item Start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>C++</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line CPP"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+                <!-- Progress Item Start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>CSS</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line css"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+                <!-- Progress Item Start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>Html</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line html"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+
+
+                <!-- Progress Item Start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>Java</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line Java"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+
+
+                <!-- Progress Item Start -->
+                <!-- <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>React</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line react"></div>
+                    </div>
+                </div> -->
+                <!-- Progress Item End -->
+
+
+
+                <!-- Progress Item Start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>Javascript</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line js"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+                <!-- Progress Item Start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>Python</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line python"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+                <!-- Progress Item Start -->
+                <div class="progress-item" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="text">
+                        <h5>SQL</h5>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-line sql"></div>
+                    </div>
+                </div>
+                <!-- Progress Item End -->
+
+
+
+                <!-- Tools  start -->
+
+                <div class="tools">
+                    <h3 align="center">Languages and Tools:</h3>
+                    <p align="center">
+                        <a href="https://developer.android.com" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg"
+                                alt="android" width="40" height="40" />
+                        </a>
+
+                        <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg"
+                                alt="cplusplus" width="40" height="40" />
+                        </a>
+
+                        <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
+                                alt="css3" width="40" height="40" />
+                        </a>
+
+                        <a href="https://www.figma.com/" target="_blank" rel="noreferrer">
+                            <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40"
+                                height="40" />
+                        </a>
+
+                        <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
+                                alt="html5" width="40" height="40" />
+                        </a>
+
+                        <a href="https://www.java.com" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                                alt="java" width="40" height="40" />
+                        </a>
+
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
+                            rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+                                alt="javascript" width="40" height="40" />
+                        </a>
+
+                        <a href="https://kotlinlang.org" target="_blank" rel="noreferrer">
+                            <img src="https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg" alt="kotlin"
+                                width="40" height="40" />
+                        </a>
+
+                        <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+                                alt="mysql" width="40" height="40" />
+                        </a>
+
+                        <a href="https://www.python.org" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                                alt="python" width="40" height="40" />
+                        </a>
+                    </p>
+                </div>
+
+
+                <!-- Tools end -->
+
+
+
+            </div>
+
+
+        </section>
+    </section>
+
+
+    <section id="services">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>Certifications</h2>
+            </div>
+            <div class="animate-bar"></div>
+            <div class="sub-heading">
+                <p>Certification courses.</p>
+            </div>
+        </div>
+        <div class="container">
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://www.udemy.com/certificate/UC-c0688b1f-46af-4f5d-b81d-2a407f0ebfb4/"
+                        target="_blank">
+                        <i class="fa-brands fa-html5"></i>
+                        <h5>HTML</h5>
+                    </a>
+                    <p>Introduction to HTML, CSS & JavaScript.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://www.udemy.com/certificate/UC-c3d6557a-b908-4bc2-9581-fc1378b42b1e/"
+                        target="_blank">
+                        <i class="fa-brands fa-figma"></i>
+                        <h5>Figma</h5>
+
+                    </a>
+
+                    <p>UI/UX Design With Figma</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://www.udemy.com/certificate/UC-25fc5b64-3268-4cd9-ad1e-e394a6ebdab1/"
+                        target="_blank">
+                        <i class="fa-solid fa-database"></i>
+                        <h5>MySQL</h5>
+
+                    </a>
+
+                    <p>MySQL Database Developement.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+
+
+                <div class="card-content">
+                    <a href="https://www.udemy.com/certificate/UC-4ad4942f-9301-4852-b6eb-16cf6f1ee6f5/"
+                        target="_blank">
+                        <i class="fa-solid fa-copyright"></i>
+                        <h5>C++</h5>
+                    </a>
+                    <p>Object Oriented Programming in C++.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://www.coursera.org/account/accomplishments/verify/YCQSMVNHAGYY?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course"
+                        target="_blank">
+                        <i class="fa-brands fa-java"></i>
+                        <h5>Java</h5>
+
+                    </a>
+
+                    <p>Java Programming: Solving Problems.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+
+
+
+            <!-- Service Card Start -->
+            <div class="service-card" data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-in-out">
+                <div class="card-content">
+                    <a href="https://my.newtonschool.co/course/7l4noyx7aa/certificate/mwdlzql0o1e3/verify/"
+                        target="_blank">
+                        <i class="fa-brands fa-java"></i>
+                        <h5>Java</h5>
+                    </a>
+
+                    <p>Introduction to Java.</p>
+                </div>
+            </div>
+            <!-- Service Card End -->
+        </div>
+    </section>
+
+    <!-------------- Portfolio Section -------------->
+    <section id="portfolio">
+        <div class="heading-wrapper">
+            <div class="heading">
+
+                <h2>Portfolio <i class="fa-solid fa-briefcase"></i></h2>
+            </div>
+            <div class="animate-bar"></div>
+            <div class="sub-heading">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, egestas. Id fermentum nullam ipsummassa.</p> -->
+            </div>
+        </div>
+
+        <!-------------- Gallery -------------->
+        <div class="gallery-wrapper">
+            <div class="gallery-nav">
+                <div class="gallery-filter">
+                    <span class="filter-item active" data-filter="all">All</span>
+                    <span class="filter-item" data-filter="brand">Brand</span>
+                    <span class="filter-item" data-filter="design">Design</span>
+                    <span class="filter-item" data-filter="photos">Photos</span>
+                </div>
+            </div>
+            <div class="content-wrapper">
+
+                <!-- Gallery Item Start -->
+                <div class="gallery-item brand" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="gallery-item-inner">
+                        <img src="portfolio-img-1.jpg" alt="brand">
+                        <div class="overlay">
+                            <h5>Brand #1</h5>
+                            <p>More Info</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item End -->
+
+                <!-- Gallery Item Start -->
+                <div class="gallery-item design" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="gallery-item-inner">
+                        <img src="portfolio-img-2.jpg" alt="design">
+                        <div class="overlay">
+                            <h5>Design #1</h5>
+                            <p>More Info</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item End -->
+
+                <!-- Gallery Item Start -->
+                <div class="gallery-item brand" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="gallery-item-inner">
+                        <img src="portfolio-img-3.jpg" alt="brand">
+                        <div class="overlay">
+                            <h5>Brand #2</h5>
+                            <p>More Info</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item End -->
+
+                <!-- Gallery Item Start -->
+                <div class="gallery-item photos" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="gallery-item-inner">
+                        <img src="portfolio-img-4.jpg" alt="photos">
+                        <div class="overlay">
+                            <h5>Photo #1</h5>
+                            <p>More Info</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item End -->
+
+                <!-- Gallery Item Start -->
+                <div class="gallery-item design" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="gallery-item-inner">
+                        <img src="portfolio-img-5.jpg" alt="design">
+                        <div class="overlay">
+                            <h5>Design #2</h5>
+                            <p>More Info</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item End -->
+
+                <!-- Gallery Item Start -->
+                <div class="gallery-item photos" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="gallery-item-inner">
+                        <img src="portfolio-img-6.jpg" alt="photos">
+                        <div class="overlay">
+                            <h5>Photo #2</h5>
+                            <p>More Info</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item End -->
+            </div>
+        </div>
+
+    </section>
+    <!-------------- Reviews Section -------------->
+
+    <!-------------- Blogs Section -------------->
+    <section id="blogs">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>Recent News</h2>
+            </div>
+            <div class="animate-bar"></div>
+            <div class="sub-heading">
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, egestas. Id fermentum nullam ipsummassa.</p> -->
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Blog Item Start -->
+            <div class="blog blog-1" data-aos="fade-right" data-aos-duration="1200">
+                <div class="img-box">
+                    <img src="Blog-img-1.jpg" alt="">
+                </div>
+                <h6>Ten Mind-Blowing Reasons Why Design Is Using This Technique For Exposure.</h6>
+                <p>Integer vitae mi libero. Aliquam consequat dolor libero, nec varius elit</p>
+                <button><a href="#">Read More</a></button>
+            </div>
+            <!-- Blog Item End -->
+            <!-- Blog Item Start -->
+            <div class="blog blog-2" data-aos="fade-right" data-aos-duration="1200">
+                <div class="img-box">
+                    <img src="Blog-img-2.jpg" alt="">
+                </div>
+                <h6>Ten Mind-Blowing Reasons Why Design Is Using This Technique For Exposure.</h6>
+                <p>Integer vitae mi libero. Aliquam consequat dolor libero, nec varius elit</p>
+                <button><a href="#">Read More</a></button>
+            </div>
+            <!-- Blog Item End -->
+            <!-- Blog Item Start -->
+            <div class="blog blog-3" data-aos="fade-right" data-aos-duration="1200">
+                <div class="img-box">
+                    <img src="Blog-img-3.jpg" alt="">
+                </div>
+                <h6>Ten Mind-Blowing Reasons Why Design Is Using This Technique For Exposure.</h6>
+                <p>Integer vitae mi libero. Aliquam consequat dolor libero, nec varius elit</p>
+                <button><a href="#">Read More</a></button>
+            </div>
+            <!-- Blog Item End -->
+        </div>
+    </section>
+
+
+    <!-------------- Contact Section -------------->
+    <section id="contact">
+        <div class="heading-wrapper">
+            <div class="heading">
+                <h2>Connect with me:</h2>
+            </div>
+            <div class="animate-bar"></div>
+        </div>
+
+        <p align="center">
+            <a href="https://linkedin.com/in/-ankitsonkar-" target="blank">
+                <img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg"
+                    alt="-ankitsonkar-" height="30" width="40" /></a>
+            <a href="https://github.com/ankit-neticon" target="_blank"><img align="center" src="GitW.png"
+                    alt="ankit-neticon" height="32" width="33" /></a>
+
+            <a href="https://www.hackerrank.com/ankit_bps2000" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg"
+                    alt="ankit_bps2000" height="70" width="40" /></a>
+
+            <a href="https://www.leetcode.com/_ankitsonkar_" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg"
+                    alt="_ankitsonkar_" height="30" width="40" /></a>
+
+            <a href="https://instagram.com/__ankitsonkar__" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg"
+                    alt="__ankitsonkar__" height="30" width="40" /></a>
+
+            <a href="https://fb.com/ankit.sonkar3000" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg"
+                    alt="ankit.sonkar3000" height="30" width="40" /></a>
+
+            <a href="https://twitter.com/@_ankitsonkar_" target="blank"><img align="center"
+                    src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg"
+                    alt="@_ankitsonkar_" height="30" width="40" /></a>
+            <a href="https://join.skype.com/invite/yagF7g3sbKnA" target="blank"><img align="center"
+                    src="https://secure.skypeassets.com/content/dam/skype/images/misc/app-tile.png" alt="@_ankitsonkar_"
+                    width="35" /></a>
+        </p>
+
+        <div class="container">
+            <form action=" https://formsubmit.co/e8e97b5c33daf3dda37d6de2e0ba060f" method="POST" data-aos="fade-right"
+                data-aos-duration="1200">
+                <div class="title">
+                    <h4>Message Me Now!..</h4>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="text" name="Name" placeholder="Name" required>
+                    </div>
+                    <div class="input-data">
+                        <input type="email" name="Email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="number" name="Phone" placeholder="Contact Number" required>
+                    </div>
+                    <div class="input-data">
+                        <input type="text" name="_subject" placeholder="Subject" required>
+                    </div>
+                </div>
+
+                <div class="input-data">
+                    <textarea type="text" name="Message" placeholder="Message" required></textarea>
+                </div>
+                <div class="form-row">
+                    <input type="submit" value="Send Your Massage" class="btn">
+                </div>
+            </form>
+
+            <div class="contact-info" data-aos="fade-right" data-aos-duration="1200">
+                <div class="title">
+                    <h4>Contact-info</h4>
+                </div>
+                <div class="subtitle">
+                    <p>Always available for freelance work if the right project comes along, Feel free
+                        to contact me!</p>
+                </div>
+
+                <ul class="contact-list">
+
+                    <!-- List Item Start -->
+                    <li class="list-item">
+                        <div class="icon">
+                            <i class="fa-brands fa-hive"></i>
+                        </div>
+                        <div class="details">
+                            <label for="#">Name</label>
+                            <p>Ankit Sonkar</p>
+                        </div>
+                    </li>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <li class="list-item">
+                        <div class="icon">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div class="details">
+                            <label for="#">Location</label>
+                            <p>UP, India</p>
+                        </div>
+                    </li>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <li class="list-item">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="details">
+                            <label for="#">Call Me</label>
+                            <p>+91-6306317498</p>
+                        </div>
+                    </li>
+                    <!-- List Item End -->
+
+                    <!-- List Item Start -->
+                    <li class="list-item">
+                        <div class="icon">
+                            <i class="fa-solid fa-at"></i>
+                        </div>
+                        <div class="details">
+                            <label for="#">Email</label>
+                            <p>ankit.vns2000@gmail.com</p>
+                        </div>
+                    </li>
+                    <!-- List Item End -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-------------- Footer -------------->
+    <footer>
+        <!-- <p>AnkitSonkar &copy All Rights Reserved 2022</p> -->
+        <h6>All Rights Reserved &copy AnkitSonkar 2022</h6>
+
+        <img src="Indian.png" height="18" width="18" alt="INDIA"><span>INDIA</span></a>
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+    <!-------------- Jquery Scripts -------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-------------- Owl Carousel Scripts -------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-------------- AOS Scripts -------------->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-------------- Local Script -------------->
+    <!-- <script src="/script.js"></script> -->
+</body>
+
+</html>
